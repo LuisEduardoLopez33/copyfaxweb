@@ -1,0 +1,34 @@
+
+#collapseExample {
+    margin-top: 20px; 
+    margin-left: auto;
+    margin-right: auto; 
+  }
+  
+ 
+  .cardpp {
+    background-color: #010108; 
+    color: #fff; 
+    padding: 6px; 
+    border-color: #000000;
+    text-align: center;
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+  
+  .carcollapp {
+    background-color: #AB90B9; 
+    color: #000000; 
+    padding: 2px;
+  }
+  #collapseData {
+    background-color: #c6c6c6; 
+    color: #000000; 
+    padding: 2px; 
+  }
+  
+.contenedo2{
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 0%;
+}

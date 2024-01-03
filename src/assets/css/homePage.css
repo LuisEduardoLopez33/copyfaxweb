@@ -1,0 +1,30 @@
+.fondo {
+    background-color: #230343; /* Cambia este color al color deseado */
+    /* Otros estilos según sea necesario */
+    min-height: 100vh;
+  }
+
+.navstyle{
+    background-color:#230343 ;
+    border-bottom: #230343;
+}
+
+.fila{
+  margin-top: 10%;
+  align-items: center;
+}
+
+.deletebuton{
+  margin-top: 10%;
+  background-color: #230343;
+  height: 35px;
+  width: 35px;
+  justify-content: center;
+  padding: 0%;
+}
+
+.columnbuton{
+  margin: 0%;
+  justify-content: left;
+  padding: 0%;
+}
