@@ -68,10 +68,12 @@ class viewContent extends React.Component{
               <div className="col-lg-12 col-xl-12 col-xxl-12 col-md-8 col-sm-8">
               
                   <div>
-                  <p className="d-flex justify-content-center">
+                  <p className="d-flex justify-content-center align-items-center">
                     <span className="cardpp card card-body" data-bs-toggle="collapse" href={"#collapseExample"+this.props.id} role="button" aria-expanded="true" aria-controls={"#collapseExample"+this.props.id}>
-                     {this.props.name}
+                     {this.props.name} <span className="texto-rojo">{this.props.total}</span>
+                     
                     </span>
+                    
                   </p>
                   <div className="collapse" id={"collapseExample"+this.props.id}>
                     <span className="carcollapp card card-body" data-bs-toggle="collapse" href={"#collapseData"+this.props.id} role="button" aria-expanded="true" aria-controls={"#collapseData"+this.props.id}>

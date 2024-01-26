@@ -32,3 +32,8 @@
   margin-bottom: 5px;
   padding: 0%;
 }
+
+.texto-rojo {
+  color: red;
+  margin-right: 8px; /* Puedes ajustar el margen según tus preferencias */
+}
