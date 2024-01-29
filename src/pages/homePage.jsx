@@ -15,7 +15,7 @@ function HomePage(){
   const fetchData = async () => {
     try {
       const axiosInstance = axios.create({
-        baseURL: 'http://187.135.95.246',
+        baseURL: 'http://189.250.23.54',
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
