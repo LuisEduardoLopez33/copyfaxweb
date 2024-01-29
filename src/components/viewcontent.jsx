@@ -1,94 +1,87 @@
 import React from "react";
 import Error from "./error";
 import "../assets/css/viewcontent.css";
+import iconDelete from "../assets/delete-icon.svg"
 
 
 class viewContent extends React.Component{
     constructor(props){
         super(props);
+
         this.state = {
-          grupedData:[]
+          grupedData:[],
+
         }
     }
 
     componentDidMount() {
-      this.groupData();
+      this.obtainProperties();
+
     }
 
-    // groupData = () => {
-    //   const originalData  = this.props.error;
-    //   const groupedData = {};
-  
-    //   originalData.forEach(item => {
-    //     const eventname = item.event_name;
-    //     if (!groupedData[eventname]) {
-    //       groupedData[eventname] = [];
-    //     }
-    //     groupedData[eventname].push(item);
-    //   });
-  
-    //   this.setState({ groupedData });
-
-    //   this.setState({ groupedData }, () => {
-    //     console.log("Grouped Data:", this.state.groupedData);
-    //   });
-    // };
-
-    groupData = () => {
-      const originalData = this.props.error;
-      const groupedData = [];
     
-      originalData.forEach(item => {
-        const eventName = item.event_name;
-        const eventData = item;  // Puedes ajustar esto según la estructura real de tus datos
+    obtainProperties = () => {
+      let events = this.props.email.events;
+      let result = [];
     
-        // Buscar si ya existe un grupo con el mismo eventName
-        const existingGroup = groupedData.find(group => group.name === eventName);
+      if (events.length > 0) {
+        let grouped = events.reduce((acc, curr) => {
+          if (!acc[curr.event_name]) {
+            acc[curr.event_name] = [];
+          }
+          let event = {
+            date: curr.event_date,
+            counter: curr.counter
+          }
+          acc[curr.event_name].push(event);
+          return acc;
+        }, {});
     
-        if (existingGroup) {
-          existingGroup.events.push(eventData);
-        } else {
-          // Si no existe, crea un nuevo grupo
-          groupedData.push({
-            name: eventName,
-            events: [eventData]
+        for (let event_name in grouped) {
+          result.push({
+            event_name: event_name,
+            events: grouped[event_name]
           });
         }
-      });
+      }
+      this.setState({grupedData: result})     
+    }
     
-      
-    };
-    
+
 
     render(){
         return (
           <React.Fragment>
-          <div className="container">
-            <div className="row justify-content-center align-items-center contenedo2 ">
-              <div className="col-lg-12 col-xl-12 col-xxl-12 col-md-8 col-sm-8">
-              
+            <div className="container">
+              <div className="row justify-content-center align-items-center contenedo2 ">
+                <div className="col-lg-12 col-xl-12 col-xxl-12 col-md-8 col-sm-8">
                   <div>
-                  <p className="d-flex justify-content-center align-items-center">
-                    <span className="cardpp card card-body" data-bs-toggle="collapse" href={"#collapseExample"+this.props.id} role="button" aria-expanded="true" aria-controls={"#collapseExample"+this.props.id}>
-                     {this.props.name} <span className="texto-rojo">{this.props.total}</span>
-                     
-                    </span>
-                    
-                  </p>
-                  <div className="collapse" id={"collapseExample"+this.props.id}>
-                    <span className="carcollapp card card-body" data-bs-toggle="collapse" href={"#collapseData"+this.props.id} role="button" aria-expanded="true" aria-controls={"#collapseData"+this.props.id}>
-                      {this.props.error.map((item, index) =>(
-                        <Error error={item.event_name} fecha={item.event_date} id={item.id} counter={item.counter}/>
-                      ))}
-                    </span>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px' }}>
+                      <div className="cardpp card card-body d-flex flex-row justify-content-between p-3" data-bs-toggle="collapse" href={"#collapseExample"+this.props.email.id} role="button" aria-expanded="true" aria-controls={"#collapseExample"+this.props.email.id}>  
+                        <span >
+                          {this.props.email.serie} | {this.props.email.device_name}
+                        </span>
+                        <span className="texto-rojo">
+                          {this.props.email.events.length}
+                        </span>
+                      </div>
+                      <button style={{ background: 'transparent', border: 'none' }} onClick={() => this.props.deleteEvent(this.props.email.id)}>
+                        <img src={iconDelete} alt="Eliminar" width="40"/>
+                      </button>
+                    </div>
+                    <div className="collapse" id={"collapseExample"+this.props.email.id}>
+                      <span className="carcollapp card card-body " data-bs-toggle="collapse" href={"#collapseData"+this.props.email.id} role="button" aria-expanded="true" aria-controls={"#collapseData"+this.props.email.id}>
+                        { this.state.grupedData.length > 0 ? (this.state.grupedData.map((item, index) =>(
+                          <Error key={index} error={item} id={this.props.email.id}/>
+                        ))): null}
+                      </span>
+                    </div> 
                   </div>
                 </div>
               </div>
-              
             </div>
-          </div>
           </React.Fragment>
-          );
+        );
     } 
 }
-export default viewContent
+export default viewContent;
