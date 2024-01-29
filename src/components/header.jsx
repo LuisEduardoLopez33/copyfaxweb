@@ -8,16 +8,14 @@ class Header extends React.Component{
     render(){
         return(
 
-            <nav className=" navbar bg-dark border-bottom border-body" >
-                <div className="container-fluid ">
-                    <a className=" navbar-brand custom-brand">
-                    <img src={logo} width="40" height="45" className="d-inline-block align-text-top"/>
-                            COPYFAX
-                    </a>
-                </div>
+            <nav className="navbar bg-dark border-bottom border-body">
+            <div className="container-fluid d-flex">
+                <a className="navbar-brand custom-brand d-flex align-items-center">
+                    <img src={logo} width="40" height="45" className="d-inline-block align-self-center me-4"/>
+                    <span className="align-self-center">COPYFAX</span>
+                </a>
+            </div>
             </nav>
-           
-            
         )
     }
 }

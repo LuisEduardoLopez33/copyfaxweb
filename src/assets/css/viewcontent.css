@@ -8,7 +8,7 @@
  
   .cardpp {
     background-color: #010108; 
-    color: #fff; 
+    color: #ADD8E6; 
     padding: 6px; 
     border-color: #000000;
     text-align: center;
@@ -17,9 +17,11 @@
   }
   
   .carcollapp {
-    background-color: #AB90B9; 
+    background-color: #FFFFFF  ; 
     color: #000000; 
     padding: 2px;
+    margin-left: 10px;
+    margin-right: 60px !important;
   }
   #collapseData {
     background-color: #c6c6c6; 
@@ -34,6 +36,17 @@
 }
 
 .texto-rojo {
-  color: red;
-  margin-right: 8px; /* Puedes ajustar el margen según tus preferencias */
+  margin-left: 15px;
+  padding: 0.5em;
+  border-radius: 50%; 
+  width: 30px;
+  height: 30px;
+  background-color: #ADD8E6 ; 
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  color: #FF0000 ;
+  font-weight: bold;
+  font-size: 19px;
 }
